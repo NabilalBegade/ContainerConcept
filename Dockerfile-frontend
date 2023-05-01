@@ -1,0 +1,18 @@
+# Base image
+FROM python:3.8-slim-buster
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the requirements file and install the dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the frontend files
+COPY app.py .
+
+# Expose port 5000 for the frontend application
+EXPOSE 5000
+
+# Set the command to run the frontend application
+CMD ["python", "app.py"]

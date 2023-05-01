@@ -1,0 +1,10 @@
+# Base image
+FROM postgres:12.8-alpine
+
+# Set the environment variables
+ENV POSTGRES_DB multi_container_app
+ENV POSTGRES_USER admin
+ENV POSTGRES_PASSWORD password
+
+# Copy the initialization script and create the database table
+COPY init.sql /docker-entrypoint-initdb.d/
